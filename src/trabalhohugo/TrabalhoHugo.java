@@ -18,7 +18,7 @@ public class TrabalhoHugo {
      */
     public static void main(String[] args) throws IOException {
         // TODO code application logic here
-        GeraGrafo gerar = new GeraGrafo(5);
+        //GeraGrafo gerar = new GeraGrafo(5);
         AlgoritmoGenerico ag = new AlgoritmoGenerico();
         System.out.println("Primeira teste git hugo");
     }
