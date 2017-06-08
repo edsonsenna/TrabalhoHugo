@@ -16,6 +16,7 @@ public class TrabalhoHugo {
      */
     public static void main(String[] args) {
         // TODO code application logic here
+        GeraGrafo gerar = new GeraGrafo(5);
         System.out.println("Primeira teste git hugo");
     }
     
