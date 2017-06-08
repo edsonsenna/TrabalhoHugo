@@ -39,6 +39,7 @@ public class GeraGrafo {
         Scanner ler = new Scanner(System.in);
         FileWriter fw = new FileWriter("Grafo.dat");
         PrintWriter pw = new PrintWriter(fw);
+        pw.println(numVertices);
         for(int i=0;i<this.numVertices;i++){
             for(int j=0;j<this.numVertices;j++){
                if(matriz[i][j]!=0){

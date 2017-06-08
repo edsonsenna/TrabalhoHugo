@@ -5,6 +5,8 @@
  */
 package trabalhohugo;
 
+import java.io.IOException;
+
 /**
  *
  * @author Edson
@@ -14,9 +16,10 @@ public class TrabalhoHugo {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         // TODO code application logic here
         GeraGrafo gerar = new GeraGrafo(5);
+        AlgoritmoGenerico ag = new AlgoritmoGenerico();
         System.out.println("Primeira teste git hugo");
     }
     
