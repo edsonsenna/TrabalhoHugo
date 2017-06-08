@@ -24,19 +24,19 @@ public class AlgoritmoGenerico {
           String linha = br.readLine();
           this.matriz = new int[Integer.parseInt(linha)][Integer.parseInt(linha)];
            System.out.printf(Integer.parseInt(linha)+"\n");
-          while (linha != null) {
-            System.out.printf(linha+"\n");
-            linha = br.readLine(); // lê da segunda até a última linha
+          while ((linha = br.readLine()) != null) {
+            System.out.printf(linha+"\n");    
             String filtro[] = linha.split(" ");
             matriz[Integer.parseInt(filtro[0])][Integer.parseInt(filtro[1])] = Integer.parseInt(filtro[2]);
+            matriz[Integer.parseInt(filtro[1])][Integer.parseInt(filtro[0])] = Integer.parseInt(filtro[2]);
           }
           fr.close();
           for(int i=0;i<5;i++){
             for(int j=0;j<5;j++){
-                   System.out.println(matriz[i][j]+" ");
+                System.out.print(matriz[i][j]+" ");
             }
-              System.out.println("");
-        }
+            System.out.println("");
+          }
         } catch (IOException e) {
             System.err.printf("Erro na abertura do arquivo: %s.\n",
               e.getMessage());
