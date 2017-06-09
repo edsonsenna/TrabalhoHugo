@@ -7,7 +7,9 @@ package trabalhohugo;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -43,7 +45,7 @@ public class AlgoritmoGenerico {
                   //ger.nextInt(this.numVertices);
           t.visitaVertice(verticeArb);
           int pesoAresta, vertice=0;
-          while(t.getNumArestas()<(this.numArestas-1)){
+          while(t.getNumArestas()<(this.numVertices-1)){
             pesoAresta = 1000;
             for(int i=0;i<numVertices;i++){
                 if((verticeArb<=i)&&(i!=verticeArb)&& (matriz[verticeArb][i] < pesoAresta) &&(matriz[verticeArb][i]!=0)){
@@ -60,7 +62,19 @@ public class AlgoritmoGenerico {
                 break;
             }          
           }
-          t.imprimeMat();
+          //t.imprimeMat();
+        this.matriz = t.getMatArestas();
+        this.numArestas = t.getNumArestas();
+        FileWriter fw = new FileWriter("mst_generico.txt");
+        PrintWriter pw = new PrintWriter(fw);
+        for(int i=0;i<this.numVertices;i++){
+          for(int j=0;j<this.numArestas;j++){
+              if(this.matriz[i][j]!=0 && i>j) pw.println((j+1)+" "+(i+1)+" "+this.matriz[i][j]);
+
+          }
+        }
+        
+        fw.close();
           /*for(int i=0;i<5;i++){
             for(int j=0;j<5;j++){
                 System.out.print(matriz[i][j]+" ");

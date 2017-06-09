@@ -18,6 +18,7 @@ public class Tree {
         this.vertices = new int[numVertices];
         this.matArestas = new int[numVertices][(((numVertices*numVertices)-numVertices)/2)];
         this.numArestas=0;
+        System.out.println("Algoritimo Genérico para MSTs");
     }
     
     public int[] getVertices() {
@@ -60,16 +61,18 @@ public class Tree {
     public void insereAresta(int i, int j, int peso){
         this.matArestas[i][this.numArestas] = peso;
         this.matArestas[j][this.numArestas] = peso;
+        System.out.println("Aresta e"+(this.numArestas+1)+":("+i+", "+j+") com Peso:"+peso);
         this.numArestas++;
     }
     
     public void imprimeMat(){
         for(int i=0;i<this.vertices.length;i++){
             for(int j=0;j<this.numArestas;j++){
-                if(this.matArestas[i][j]!=0) System.out.println(i+" "+j+" "+this.matArestas[i][j]);
+                if(this.matArestas[i][j]!=0 && i>j) System.out.println((j+1)+" "+(i+1)+" "+this.matArestas[i][j]);
                 
             }
         }
+        System.out.println("Teste");
     }
     
     

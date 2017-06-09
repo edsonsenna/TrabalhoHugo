@@ -20,7 +20,7 @@ public class TrabalhoHugo {
         // TODO code application logic here
         //GeraGrafo gerar = new GeraGrafo(5);
         AlgoritmoGenerico ag = new AlgoritmoGenerico();
-        System.out.println("Primeira teste git hugo");
+        //System.out.println("Primeira teste git hugo");
     }
     
 }
