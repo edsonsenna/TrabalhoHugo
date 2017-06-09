@@ -21,6 +21,7 @@ public class AlgoritmoGenerico {
     private int matriz[][];
     private int numArestas=0;
     private int numVertices;
+    private int verticeVis[];
     public AlgoritmoGenerico(){
         Scanner ler = new Scanner(System.in);
         try {   
@@ -28,8 +29,9 @@ public class AlgoritmoGenerico {
           BufferedReader br = new BufferedReader(fr);
           String linha = br.readLine();
           this.matriz = new int[Integer.parseInt(linha)][Integer.parseInt(linha)];
-          //this.numArestas = (((Integer.parseInt(linha)*Integer.parseInt(linha))-Integer.parseInt(linha))/2);
+          this.numArestas = (((Integer.parseInt(linha)*Integer.parseInt(linha))-Integer.parseInt(linha))/2);
           this.numVertices = Integer.parseInt(linha);
+          this.verticeVis = new int [Integer.parseInt(linha)];
           Tree t = new Tree(Integer.parseInt(linha));
           //System.out.printf(Integer.parseInt(linha)+"\n");
           while ((linha = br.readLine()) != null) {
@@ -37,25 +39,28 @@ public class AlgoritmoGenerico {
             String filtro[] = linha.split(" ");
             matriz[Integer.parseInt(filtro[0])][Integer.parseInt(filtro[1])] = Integer.parseInt(filtro[2]);
             matriz[Integer.parseInt(filtro[1])][Integer.parseInt(filtro[0])] = Integer.parseInt(filtro[2]);
-            this.numArestas++;
+            //this.numArestas++;
           }
           fr.close();
           Random ger = new Random();
-          int verticeArb = 0;
-                  //ger.nextInt(this.numVertices);
+          //int verticeArb = 0;
+          int verticeArb=ger.nextInt(this.numVertices);
+          this.verticeVis[verticeArb]=1;
           t.visitaVertice(verticeArb);
           int pesoAresta, vertice=0;
           while(t.getNumArestas()<(this.numVertices-1)){
             pesoAresta = 1000;
             for(int i=0;i<numVertices;i++){
-                if((verticeArb<=i)&&(i!=verticeArb)&& (matriz[verticeArb][i] < pesoAresta) &&(matriz[verticeArb][i]!=0)){
+                if((i!=verticeArb)&& (matriz[verticeArb][i] < pesoAresta) &&(matriz[verticeArb][i]!=0) && this.verticeVis[i]!=1){
                      pesoAresta = matriz[verticeArb][i];
                      vertice = i;
+                    
                     
                 }
             }
             if(t.visitaVertice(vertice)){
                   t.insereAresta(verticeArb, vertice, pesoAresta);
+                   this.verticeVis[vertice] = 1;
                   verticeArb=vertice;
             }else{
                 //System.out.println("Fechou ciclo");
@@ -69,7 +74,7 @@ public class AlgoritmoGenerico {
         PrintWriter pw = new PrintWriter(fw);
         for(int i=0;i<this.numVertices;i++){
           for(int j=0;j<this.numArestas;j++){
-              if(this.matriz[i][j]!=0 && i>j) pw.println((j+1)+" "+(i+1)+" "+this.matriz[i][j]);
+              if(this.matriz[i][j]!=0) pw.println((j+1)+" "+(i+1)+" "+this.matriz[i][j]);
 
           }
         }

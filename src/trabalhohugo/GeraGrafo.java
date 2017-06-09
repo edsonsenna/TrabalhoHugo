@@ -31,6 +31,7 @@ public class GeraGrafo {
             peso=gerador.nextInt(15);
             if(matriz[n][m]!=peso){
                 matriz[n][m]=peso;
+                matriz[m][n]=peso;
             }
             else{
                 i--;
@@ -42,7 +43,7 @@ public class GeraGrafo {
         pw.println(numVertices);
         for(int i=0;i<this.numVertices;i++){
             for(int j=0;j<this.numVertices;j++){
-               if(matriz[i][j]!=0){
+               if(matriz[i][j]!=0 && i!=j && i<j){
                    pw.println(i+" "+j+" "+matriz[i][j]);
 
                }        
